@@ -1,0 +1,17 @@
+1) SELECT * FROM CUSTOMERS;
+
+2) SELECT CustomerName ,City FROM Customers;
+
+3) SELECT Quantity FROM OrderDetails; 
+
+4) SELECT City , Country FROM Customers;
+
+5) SELECT CategoryName , Description FROM Categories;
+
+6) SELECT FirstName , LastName FROM Employees;
+
+7) SELECT ProductName , Price FROM Products;
+
+8) SELECT SupplierID , SupplierName , City FROM Suppliers;
+
+10) SELECT OrderID , EmployeeID , OrderDate FROM Orders;
