@@ -1,0 +1,22 @@
+1) select emp_name , length(emp_name) as namelength 
+   from employee_sales;
+
+2) select lower(Emp_name) as Small , 
+   upper(emp_name) as Capital 
+   from employee_sales;
+
+3) Select concat(emp_name , '-' , salary) as Combo 
+   from employee_sales;
+
+4) Select left(emp_name , 4) as leftcut , 
+   right(emp_name , 3) as rightcut 
+   From employee_sales;
+
+5) select substring('data analyst' , 1,4) as halfname 
+   from employee_sales;
+
+6) select emp_name , trim(emp_name) as removesapce 
+   from employee_sales;
+
+7) select replace('2021-05-10','-','/') as newformat 
+   from employee_sales;
