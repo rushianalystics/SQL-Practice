@@ -1,0 +1,15 @@
+1) select emp_name , salary ,
+   if (salary > 50000 , 'good' , 'bad') as salarylevel
+   from employee_sales;
+
+2) SELECT EMP_NAME , EXPERIENCE ,
+   IF (EXPERIENCE > 5 , 'GOODEXPERIENCE' , 'FRESHERS') AS EXPERIENCELVL 
+   FROM employee_sales;
+
+3) SELECT EMP_NAME , BONUS , 
+   IF(BONUS > 5000 , 'GOODBONUS' , 'AVGBONUS') AS BONUSLEVEL 
+   FROM employee_sales;
+
+4) SELECT Emp_Name , Sales ,
+   IF( SALES > 200000 , 'GOOD' , 'AVG') AS SALESMEASUER 
+   FROM employee_sales;
