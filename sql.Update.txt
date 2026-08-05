@@ -1,0 +1,19 @@
+1) update employee_sales
+   set age = 27 
+   where emp_id = 101 ;
+
+2) update employee_sales
+   set emp_name = 'Rushi' , department = 'Sales'
+   where emp_id = 105 ;
+
+3) update employee_sales
+   set city = 'banglore' , salary = 50000
+   where emp_id = 105 ;
+
+4) update employee_sales
+   set age = 21 , bonus = 5000
+   where emp_id = 105 ; 
+
+5) update employee_sales
+   set EXPERIENCE = 1
+   WHERE EMP_ID = 105;
