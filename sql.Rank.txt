@@ -1,0 +1,23 @@
+1) select emp_name , salary ,
+   rank() over (order by salary desc ) as salaryrank
+   from employee_sales;
+
+2) select emp_name , salary , department ,
+   rank() over (partition by Department order by salary desc ) as salaryrank
+   from employee_sales;
+
+3) select emp_name , bonus , 
+   rank() over (order by bonus desc ) as bonusrank
+   from employee_sales;
+
+4) select emp_name , bonus , department ,
+   rank() over (partition by department order by bonus desc ) as bonusrank
+   from employee_sales;
+
+5) select emp_name , experience ,
+   rank() over(order by Experience desc) as exp
+   from employee_sales;
+
+6) select emp_name , age ,
+   rank() over(order by age desc) as agerank
+   from employee_sales;
