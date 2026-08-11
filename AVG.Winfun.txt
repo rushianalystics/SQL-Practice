@@ -1,0 +1,11 @@
+1) select emp_name , salary ,
+   avg(salary) over(order by salary desc) as runningavg
+   from employee_sales;
+
+2) select emp_name , bonus ,
+   avg(bonus) over(order by bonus desc) as runningavg
+   from employee_sales;
+
+3) select emp_name , sales ,
+   avg(sales) over(order by sales desc) as runningavg
+   from employee_sales;
