@@ -1,0 +1,23 @@
+1) select emp_name , salary ,
+   lead(salary) over (order by salary desc) as nextsalary
+   from employee_sales;
+
+2) select emp_name , salary , department ,
+   lead(salary) over (partition by department order by salary desc) as nextsalary
+   from employee_sales;
+
+3) select emp_name , bonus ,
+   lead(bonus) over ( order by bonus desc) as nextbonus
+   from employee_sales;
+
+4) select emp_name , bonus , department ,
+   lead(bonus) over ( partition by department order by bonus desc) as nextbonus
+   from employee_sales;
+
+5) select sales, Department,
+   lead(sales) over (order by sales desc) as nextsales
+   from employee_sales;
+
+6) select sales, Department,
+   lead(sales) over (partition by department order by sales desc) as nextsales
+   from employee_sales;
