@@ -1,0 +1,27 @@
+1) select emp_name , salary ,
+   ntile(4)over(order by salary desc) as quartile
+   from employee_sales;
+
+2) select emp_name , salary ,
+   ntile(5)over(order by salary desc) as quartile
+   from employee_sales;
+
+3) select emp_name , salary , department ,
+   ntile(4)over(partition by department order by salary desc) as quartile
+   from employee_sales;
+
+4) select emp_name , salary , department ,
+   ntile(5)over(partition by department order by salary desc) as quartile
+   from employee_sales;
+
+5) select emp_name , bonus,
+   ntile(4)over( order by bonus desc) as quartile
+   from employee_sales;
+
+6) select emp_name , bonus, Department ,
+   ntile(4)over( partition by Department order by bonus desc) as quartile
+   from employee_sales;
+
+7) select emp_name , department , sales ,
+   ntile(4)over(partition by department order by sales desc) as quartile
+   from employee_sales;
