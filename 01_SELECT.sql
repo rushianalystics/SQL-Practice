@@ -15,3 +15,5 @@
 8) SELECT SupplierID , SupplierName , City FROM Suppliers;
 
 10) SELECT OrderID , EmployeeID , OrderDate FROM Orders;
+
+11) SELECT project_name , project_category from employee_name;
