@@ -1,0 +1,73 @@
+1) select * from employees;
+
+2) Find the 2nd highest salary = SELECT MAX(salary) AS second_highest_salary
+                                 FROM employees
+                                 WHERE salary < (
+                                 SELECT MAX(salary)
+                                 FROM employees
+
+3) Find the 2nd highest salary in each department =
+   
+   SELECT * FROM (
+   SELECT*, 
+   dense_rank()OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS HIGH_SALARY
+   FROM EMPLOYEES
+   ) A
+   WHERE HIGH_SALARY = 2;
+
+4) Find employees whose salary is greater than the average salary = 
+   
+   SELECT EMP_NAME , SALARY FROM employees
+   WHERE SALARY > (SELECT AVG(SALARY) FROM employees);
+
+5) Find the highest-paid employee in each department = 
+  
+   SELECT * FROM (
+   SELECT * ,
+   dense_rank()OVER(partition by DEPARTMENT order by SALARY DESC) AS HIGH_PAID
+   FROM employees
+   )A
+   WHERE HIGH_PAID = 1;
+
+6) Find the latest joined employee in each department =
+   
+   SELECT * FROM (
+   SELECT *,
+   dense_rank()OVER(partition by DEPARTMENT order by JOINING_DATE DESC) AS LATEST_JOIN
+   FROM EMPLOYEES
+   )A
+   WHERE LATEST_JOIN = 1;
+
+7) Find departments having more than 2 employees = 
+
+   SELECT DEPARTMENT , count(*) AS TOTAL_EMP FROM employees
+   group by DEPARTMENT
+   HAVING count(*) > 2;
+
+8) Find departments where the average salary is greater than 50,000 =
+   
+   SELECT DEPARTMENT , AVG(SALARY) AS AVG_SALARY FROM employees
+   group by DEPARTMENT
+   HAVING AVG(SALARY) > 50000 ;
+
+9) Employees Salary Category = 
+
+   SELECT EMP_NAME , SALARY ,
+   CASE
+   WHEN Salary >= 60000 THEN 'HIGH' AND SALARY >= 40000 THEN 'MEDIUM'
+   ELSE 'LOW'
+   END AS SALARY_CATEGORY
+   FROM EMPLOYEES;
+
+10) Find how many employees are in each salary category = 
+
+    SELECT
+    CASE
+        WHEN salary >= 60000 THEN 'High'
+        WHEN salary >= 40000 THEN 'Medium'
+        ELSE 'Low'
+    END AS salary_category,
+    COUNT(*) AS total_emp
+    FROM employees
+    GROUP BY salary_category;
+   
