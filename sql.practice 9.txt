@@ -1,0 +1,26 @@
+1) Display each employee's name in uppercase =
+
+   select emp_name , 
+   ucase(emp_name) as uppername 
+   from employees;
+
+2) Display employee names in lowercase =
+
+   select emp_name , 
+   lower(emp_name) as lowername 
+   from employees;
+
+3) Find employees whose name starts with 'A' =
+
+   select emp_name from employees
+   where emp_name like 'A%';
+
+4) Find employees whose name ends with 'a' =
+
+   select emp_name from employees
+   where emp_name like '%a';
+
+5) Find employees whose name contains 'ha' anywhere in the name =
+
+   select emp_name from employees
+   where emp_name like '%ha%';
