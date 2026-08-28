@@ -1,0 +1,25 @@
+1) Find all employees whose manager_id is NULL =
+
+   select * from employees
+   where manager_id is null;
+
+2) Find employees who have a manager assigned =
+
+   select * from employees
+   where manager_id is not null;
+
+3) Display employee name and manager ID. If manager_id is NULL, display 'No Manager' instead =
+
+   select emp_name , 
+   coalesce(manager_id , 'no manager')
+   from employees;
+
+4) Display employee name and salary. If salary is NULL, display 0 =
+
+   select emp_name , coalesce(salary , 0) 
+   from employees;
+
+5) Display employee name and salary. If salary is 0, convert it to NULL =
+
+   select emp_name , nullif(salary , 0) as salary
+   from employees;
