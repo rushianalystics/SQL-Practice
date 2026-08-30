@@ -1,0 +1,41 @@
+1) Find employees whose salary is greater than the overall average salary of the company =
+
+   select emp_name , salary
+   from employees
+   where salary > (select avg(salary) from employees);
+
+2) Find the employee(s) who have the highest salary in each department =
+
+   select emp_name , salary
+   from employees e1
+   where salary = (select avg(salary) from employees e2
+                   where e1.department = e2.department ); 
+
+3) Find employees whose salary is greater than the average salary of their own department =
+
+   select emp_name , salary
+   from employees e1
+   where salary > (select avg(salary) from employees e2
+                   where e1.department = e2.department ); 
+
+4) Find employees who earn the same salary as Rahul =
+
+   select emp_name , salary
+   from employees
+   where salary = (select salary from employees
+                   where emp_name = 'rahul');
+
+5) Find the second highest salary in the company =
+
+   SELECT emp_name, salary
+   FROM employees
+   WHERE salary = (
+    SELECT MAX(salary)
+    FROM employees
+    WHERE salary < (
+        SELECT MAX(salary)
+        FROM employees
+    )
+);
+
+   
