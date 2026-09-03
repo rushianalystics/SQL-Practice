@@ -1,0 +1,43 @@
+ -- 1) Total Employees
+ 
+SELECT 
+    COUNT(*) AS total_employees
+FROM
+    employees;
+    
+-- 2)  Active Employees
+
+SELECT 
+    COUNT(*) AS active_emp
+FROM
+    employees
+WHERE
+    employment_status = 'active';
+    
+-- 3) Employee Attrition Rate
+
+SELECT 
+    SUM(CASE
+        WHEN employment_status IN ('resigned' , 'terminated') THEN 1
+        ELSE 0
+    END) * 100.0 / COUNT(*) AS attribution_rate_percent
+FROM
+    employees;
+    
+-- 4) Average Employee Salary
+
+SELECT 
+    ROUND(AVG(salary), 2) AS avg_salary
+FROM
+    employees;
+    
+-- 5) Salary by Department
+
+SELECT 
+    d.department_name, ROUND(AVG(e.salary), 2) AS avg_salary
+FROM
+    employees e
+        INNER JOIN
+    departments d ON e.department_id = d.department_id
+GROUP BY d.department_name
+ORDER BY avg_salary DESC;
