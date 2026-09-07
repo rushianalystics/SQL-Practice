@@ -1,0 +1,54 @@
+1) Find the departments having more than 3 employees =
+    
+   SELECT 
+    department, COUNT(*) AS total_emp
+FROM
+    employees
+GROUP BY department
+HAVING COUNT(*) > 3;
+
+2) Find the department with the highest number of employees =
+
+   SELECT 
+    department, COUNT(*) AS total_emp
+FROM
+    employees
+GROUP BY department
+ORDER BY total_emp DESC
+LIMIT 1;
+
+3) Find the department with the lowest number of employees =
+
+   SELECT 
+    department, COUNT(*) AS total_emp
+FROM
+    employees
+GROUP BY department
+ORDER BY total_emp 
+LIMIT 1;
+
+4) Find the total number of employees and the average salary for each department =
+
+   SELECT 
+    department, COUNT(*) AS total_emp, AVG(salary) AS avg_salary
+FROM
+    employees
+GROUP BY department;
+
+5) Find the departments where the total salary is greater than 2,00,000 =
+
+   SELECT 
+    department, SUM(salary) AS total_salary
+FROM
+    employees
+GROUP BY department
+HAVING SUM(salary) > 200000;
+
+6) Find the departments where the average salary is less than 40,000 =
+
+   SELECT 
+    department, avg(salary) AS avg_salary
+FROM
+    employees
+GROUP BY department
+HAVING avg(salary) < 40000;
