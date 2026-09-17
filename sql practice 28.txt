@@ -1,0 +1,60 @@
+1) Find employees who earn more than the average salary of their department and have joined after 2022 =
+
+select emp_name , department , salary , joining_date
+from employees e1
+where salary > (select avg(salary) from employees e2
+                  where e1.department = e2.department
+)
+and joining_date >= '2022-1-1';
+
+2) Find the top 2 highest-paid employees in each department =
+
+select emp_name , department , salary 
+from (
+select emp_name , department , salary,
+dense_rank()over(partition by department order by salary desc) as rnk
+from employees
+)A
+where rnk <= 2;
+
+3) Find employees who have the highest salary in their department and joined after 2022 =
+
+select emp_name , department , salary , joining_date
+from (
+select emp_name , department , salary,joining_date,
+dense_rank()over(partition by department order by salary desc) as rnk
+from employees
+)A
+where rnk =1 
+and joining_date >= '2022-1-1';
+
+4) Find the third-highest salary in each department =
+
+select emp_name , department , salary 
+from (
+select emp_name , department , salary,
+dense_rank()over(partition by department order by salary desc) as rnk
+from employees
+)A
+where rnk = 3
+
+5) Find employees whose salary is the second-highest salary in their department and who joined after 2022 =
+
+select emp_name , department , salary , joining_date
+from (
+select emp_name , department , salary, joining_date,
+dense_rank()over(partition by department order by salary desc) as rnk
+from employees
+)A
+where rnk = 2
+and joining_date > '2022-1-1';
+
+6) Find the department with the highest total salary and display all employees from that department =
+
+select emp_name , salary , department 
+from employees
+where department = (select department
+                      from employees
+                      group by department
+                      order by sum(salary) desc
+                      limit 1);
