@@ -1,0 +1,54 @@
+1) Find the employee name and their department name using INNER JOIN =
+
+select emp_name , department_name
+from employees
+inner join departments
+on employees.department_id = departments.department_id;
+
+2) Find all employees along with their department names, including employees who are not assigned to any department =
+
+select emp_name , department_name
+from employees
+left join departments
+on employees.department_id = departments.department_id;
+
+3) Find all departments that have no employees =
+
+select emp_name , department_name
+from employees
+right join departments
+on employees.department_id = departments.department_id
+where emp_id is null;
+
+4) Find all employees and their department names, including employees without a department, and display only employees whose salary is greater than 50,000 =
+
+select emp_name , department_name
+from employees
+left join departments
+on employees.department_id = departments.department_id
+where salary > 50000;
+
+5) Find the number of employees in each department, including departments with zero employees =
+
+select count(e.emp_id) as nuofemp , d.department_name, d.department_id
+from employees e
+left join departments d
+on e.department_id = d.department_id
+group by d.department_id , d.department_name;
+
+6) Find the average salary of employees in each department along with the department name =
+
+select avg(e.salary) as avg_salary , d.department_name, d.department_id
+from employees e
+Right join departments d
+on e.department_id = d.department_id
+group by d.department_id , d.department_name;
+
+7) Find departments where the average employee salary is greater than 50,000 =
+
+select avg(e.salary) as avg_salary , d.department_name
+from employees e
+right join departments d
+on e.department_id = d.department_id
+group by d.department_name 
+having avg_salary > 50000;
