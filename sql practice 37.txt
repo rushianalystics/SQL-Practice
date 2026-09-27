@@ -1,0 +1,31 @@
+1) Find all employees whose salary is greater than the overall average salary of all employees =
+
+select e.emp_name , e.salary , d.department_id
+from employees e
+left join departments d
+on e.department_id = d.department_id
+where e.salary > (select avg(salary) from employees);
+
+2) Find the employee(s) who earn the highest salary in the company =
+
+select e.emp_name , e.salary 
+from employees e
+where e.salary = (select max(salary) from employees);
+
+3) Find employees who earn more than Rahul's salary =
+
+select e.emp_name , e.salary
+from employees e
+where e.salary > ( select salary from employees
+                   where emp_name = 'rahul');
+
+4) Find employees whose salary is greater than the average salary of their department =
+
+SELECT e.emp_name,
+       e.salary
+FROM employees e
+WHERE e.salary > (
+    SELECT AVG(e2.salary)
+    FROM employees e2
+    WHERE e2.department_id = e.department_id
+);
