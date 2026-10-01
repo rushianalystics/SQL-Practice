@@ -1,0 +1,31 @@
+-- 1)Find the number of delayed deliveries for each region.
+
+select count(*) as delayed_deliveries , region
+from delivery_data
+where `delayed` = 1
+group by region;
+
+-- 2)Find the average delivery time for each delivery partner.
+
+select avg(delivery_time_hours) as avg_delivery_time , delivery_partner
+from delivery_data
+group by delivery_partner;
+
+-- 3)Find the number of delayed deliveries for each delivery partner.
+
+select count(*) as number_of_delay_delivery , delivery_partner
+from delivery_data
+where `delayed` = 1
+group by delivery_partner;
+
+-- 4)Find the average delivery rating for each delivery partner.
+
+select avg(delivery_rating) as avg_delivery_rating , delivery_partner
+from delivery_data
+group by delivery_partner;
+
+-- 5)Find the average delivery time for each vehicle type.
+
+select avg(delivery_time_hours) as avg_delivery_time , vehicle_type
+from delivery_data
+group by vehicle_type;
