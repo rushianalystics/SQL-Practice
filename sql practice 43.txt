@@ -1,0 +1,29 @@
+-- 1)Find the average delivery cost for each vehicle type.
+
+select avg(delivery_cost) as avg_delivery_cost , vehicle_type
+from delivery_data
+group by vehicle_type;
+
+-- 2)Find the average delivery rating for each vehicle type.
+
+select avg(delivery_rating) as avg_delivery_rating , vehicle_type
+from delivery_data
+group by vehicle_type;
+
+-- 3)Find the average delivery time for each delivery status.
+
+select avg(delivery_time_hours) as avg_delivery_time , delivery_status
+from delivery_data
+group by delivery_status;
+
+-- 4)Find the average distance travelled for each delivery mode.
+
+select avg(distance_km) as avg_distance_travelled , delivery_mode
+from delivery_data
+group by delivery_mode;
+
+-- 5)Find the average package weight for each package type.
+
+select avg(package_weight_kg) as avg_package_weight , package_type
+from delivery_data
+group by package_type;
