@@ -1,0 +1,40 @@
+-- 1)Find the average delivery rating for each region.
+
+select avg(delivery_rating) as avg_delivery_rating , region
+from delivery_data
+group by region;
+
+-- 2)Find the number of deliveries for each delivery partner, along with the number of delayed deliveries.
+
+SELECT delivery_partner,
+       COUNT(*) AS total_deliveries,
+       SUM(CASE WHEN `delayed` = 1 THEN 1 ELSE 0 END) AS delayed_deliveries
+FROM delivery_data
+GROUP BY delivery_partner;
+
+-- 3)Find the delay percentage for each delivery partner.
+
+select delivery_partner , 
+	   sum(`delayed` = 1) as total_delayed_delivery,
+       count(*) as total_delivery,
+       (sum(`delayed` = 1) /count(*)) * 100 as delayed_percentage
+from delivery_data
+group by delivery_partner;
+
+-- 4)Find the delay percentage for each region.
+
+select region,
+       sum(`delayed` = 1) as total_delayed_deliveries,
+       count(*) as total_deliveries,
+       (sum(`delayed` = 1) / count(*)) * 100 as delayed_percentage_region
+from delivery_data
+group by region;
+
+-- 5)Find the delay percentage for each delivery mode.
+
+select delivery_mode,
+       sum(`delayed` = 1) as total_delayed_deliveries,
+       count(*) as total_deliveries,
+       (sum(`delayed` = 1) / count(*)) * 100 as delayed_percentage_delivery_mode
+from delivery_data
+group by delivery_mode;
